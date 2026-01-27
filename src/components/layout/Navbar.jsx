@@ -84,7 +84,7 @@ export default function Navbar() {
   if (!mounted) return null;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-start p-3 pointer-events-none">
+    <nav className="fixed top-0 left-0  w-full z-50 flex justify-between items-start p-3 pointer-events-none">
       
       {/* --- Left Menu (Wrapped in Ref) --- */}
       <div ref={menuRef} className="relative pointer-events-auto flex flex-col items-start">
