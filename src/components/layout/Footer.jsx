@@ -60,7 +60,7 @@ export default function Footer() {
       <div className="absolute px-8 top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-40" />
       
       {/* Main footer content - Set to match Hero width */}
-      <div className="max-w-[1440px] mx-auto px-8 py-20 lg:py-28"> 
+      <div className="relative max-w-[1440px] mx-auto px-8 py-20 lg:py-28"> 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           
           {/* Company Info */}
