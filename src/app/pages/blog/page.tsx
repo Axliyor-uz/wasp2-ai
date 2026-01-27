@@ -56,7 +56,7 @@ const Blog = () => {
   const t = contentForBlog[lang];
 
   return (
-    <div className={`${isDark ? 'dark bg-[#020617] text-slate-100' : 'bg-slate-50 text-slate-900'} min-h-screen transition-colors duration-500 font-sans p-4 md:p-8 relative overflow-hidden`}>
+    <div className={`${isDark ? 'dark bg-[#020617] text-slate-100' : 'bg-slate-50 text-slate-900'} min-h-screen transition-colors duration-500 font-sans p-4 md:p-4  relative overflow-hidden`}>
       
       {/* Decorative Background - Reduced Intensity */}
       <div className="absolute inset-0 pointer-events-none">

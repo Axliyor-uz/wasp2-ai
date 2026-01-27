@@ -236,7 +236,7 @@ export default function SmartIPhoneShowcase() {
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="flex flex-col items-end sm:items-start sm:text-left text-right"
+        className="flex flex-col lg:items-end items-start text-left lg:text-right"
       >
         <div className={`w-14 h-14 mb-6 rounded-2xl flex items-center justify-center border shadow-lg transition-all duration-700 ${
           isDark ? "bg-indigo-500/20 border-indigo-400/30 shadow-indigo-500/10" : "bg-indigo-100 border-indigo-200 shadow-indigo-200/50"
@@ -390,7 +390,7 @@ export default function SmartIPhoneShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className= {`relative rounded-[2rem] p-6 bg-white/5 backdrop-blur-xl border border-white/10  ${isDark ? "text-white/40" : "text-gray-400"} text-white shadow-2xl h-full flex flex-col group `}
+        className= {`relative rounded-[2rem] p-6 bg-white/5 backdrop-blur-xl border border-white/10  ${isDark ? "text-gray-400" : "text-white/40"} text-white shadow-2xl h-full flex flex-col group `}
       >
          {/* Dynamic Coming Soon Badge */}
         <div className="absolute -top-3 -right-3">

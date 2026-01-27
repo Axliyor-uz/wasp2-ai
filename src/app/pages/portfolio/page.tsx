@@ -74,7 +74,7 @@ const router = useRouter();
   const t = content[lang] || content['en'];
 
   return (
-    <div className={`${isDark ? 'dark bg-[#020617] text-slate-100' : 'bg-slate-50 text-slate-900'} min-h-screen transition-colors duration-500 p-4 md:p-12 relative overflow-hidden font-sans`}>
+    <div className={`${isDark ? 'dark bg-[#020617] text-slate-100' : 'bg-slate-50 text-slate-900'} min-h-screen transition-colors duration-500 p-4 relative overflow-hidden font-sans`}>
       
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
