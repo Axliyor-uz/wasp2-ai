@@ -314,7 +314,7 @@ ${message}
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-bold ml-2 opacity-70">{t.form.service}</label>
                 <select
-                  className={`w-full p-4 rounded-2xl border outline-none transition-all appearance-none ${styles.input}`}
+                  className={`w-full p-4 rounded-2xl border outline-none transition-all ${isDark ? "text-gray-300" : "text-gray-600"} appearance-none ${styles.input}`}
                   value={service}
                   onChange={(e) => setService(e.target.value)}
                   disabled={loading}

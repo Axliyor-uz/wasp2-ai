@@ -23,8 +23,9 @@ const About = () => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
-  const content: any = {
+   const content: any = {
     en: {
+
       title: "Our Story",
       tagline: "Bridging Tashkent to the Global Tech Stage.",
       discovered: "Established 2025",
@@ -35,12 +36,43 @@ const About = () => {
       storyLeftCard: "Founding engineers",
       storyRightCard: "Service & Support",
       philosophy: [
-        { title: "Precision", desc: "We don't just write code; we architect solutions that scale.", icon: <Target className="w-6 h-6" /> },
-        { title: "Transparency", desc: "Direct access to developers. No middleman, no secrets.", icon: <Compass className="w-6 h-6" /> },
-        { title: "Local Talent", desc: "Empowering the next generation of Uzbek engineers.", icon: <Users2 className="w-6 h-6" /> }
+        { title: "Precision", desc: "We don't just write code; we architect solutions that scale.", icon: <Target /> },
+        { title: "Transparency", desc: "Direct access to developers. No middleman, no secrets.", icon: <Compass /> },
+        { title: "Local Talent", desc: "Empowering the next generation of Uzbek engineers.", icon: <Users2 /> }
       ]
     },
-    // ... ru and uz content remains the same
+    ru: {
+      title: "О Нас",
+      tagline: "Соединяем Ташкент с глобальной тех-сценой.",
+      discovered: "Основано в 2025 году",
+      storyTitle: "Открытие",
+      storyText: "Wasp-2 AI родился из простого осознания: инженерные таланты в Ташкенте мирового уровня, но нужен был мост к глобальным стандартам. Мы начинали как 7 специалистов с одной целью — точность.",
+      locationTitle: "Штаб-квартира",
+      address: "Ташкент, Узбекистан. Район Mirobod.",
+      storyLeftCard: "Инженеры-основатели",
+    storyRightCard: "Обслуживание и поддержка",
+      philosophy: [
+        { title: "Точность", desc: "Мы не просто пишем код; мы проектируем масштабируемые решения.", icon: <Target /> },
+        { title: "Прозрачность", desc: "Прямой доступ к разработчикам. Никаких посредников.", icon: <Compass /> },
+        { title: "Местные Таланты", desc: "Развиваем новое поколение узбекских инженеров.", icon: <Users2 /> }
+      ]
+    },
+    uz: {
+      title: "Biz Haqimizda",
+      tagline: "Toshkentni global texnologiya sahnasi bilan bog'laymiz.",
+      discovered: "2025-yilda asos solingan",
+      storyTitle: "Kashfiyot",
+      storyText: "Wasp-2 AI oddiy bir haqiqatni anglashdan paydo bo'lgan: Toshkentdagi muhandislik iste'dodi jahon darajasida, ammo global standartlarga ko'prik kerak edi. Biz aniqlikni maqsad qilgan 7 mutaxassis sifatida boshladik.",
+      locationTitle: "Bosh Ofis",
+      address: "Toshkent, O'zbekiston. Mirobod hududi.",
+      storyLeftCard: "Asoschi muhandislar",
+    storyRightCard: "Xizmat ko'rsatish va yordam",
+      philosophy: [
+        { title: "Aniqlik", desc: "Biz shunchaki kod yozmaymiz; biz kengayuvchi arxitektura quramiz.", icon: <Target /> },
+        { title: "Shaffoflik", desc: "Dasturchilar bilan to'g'ridan-to'g'g'ri aloqa. Vositachilar yo'q.", icon: <Compass /> },
+        { title: "Mahalliy Iste'dod", desc: "O'zbekistonning yangi avlod muhandislarini qo'llab-quvvatlaymiz.", icon: <Users2 /> }
+      ]
+    }
   };
 
   const t = content[lang] || content['en'];
