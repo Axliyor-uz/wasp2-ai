@@ -130,6 +130,7 @@ export default function HomeClient({ initialData }: { initialData: any[] | null 
               <Sparkles className={`w-6 h-6 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
             </motion.div>
             <span
+            
               className={`text-base font-bold bg-gradient-to-r ${
                 isDark ? "from-purple-400 via-blue-400 to-cyan-400" : "from-purple-600 via-blue-600 to-cyan-600"
               } bg-clip-text text-transparent tracking-widest uppercase`}

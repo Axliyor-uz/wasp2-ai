@@ -53,18 +53,22 @@ export default function Footer() {
 
   return (
     <footer className={`relative transition-colors duration-500 ${isDark ? "bg-gray-900" : "bg-gray-50"}`}>
-      {/* Top Border Glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-30" />
+      {/* Subtle Top Divider */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
       
-      {/* Main footer content - matches 1440px width with smaller padding */}
-      <div className="relative max-w-[1440px] mx-auto px-8 py-12 lg:py-16"> 
+      {/* Container Adjustments:
+          - px-10: More padding on mobile to keep content away from screen edges
+          - md:px-8: Standard padding for larger screens
+          - py-12 lg:py-16: Reduced vertical height
+      */}
+      <div className="relative max-w-[1440px] mx-auto px-10 md:px-8 py-12 lg:py-16"> 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className={`p-2.5 rounded-xl ${isDark ? "bg-purple-500/20" : "bg-purple-100"}`}>
-                <Briefcase className={`w-7 h-7 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
+              <div className={`p-2 rounded-xl ${isDark ? "bg-purple-500/20" : "bg-purple-100"}`}>
+                <Briefcase className={`w-6 h-6 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
               </div>
               <span className={`text-2xl font-black tracking-tight ${isDark ? "text-white" : "text-gray-900"}`}>
                 Wasp2<span className="text-purple-500">AI</span>
@@ -77,7 +81,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className={`text-lg font-bold mb-6 uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h3 className={`text-sm font-bold mb-5 uppercase tracking-[0.2em] ${isDark ? "text-white" : "text-gray-900"}`}>
               {t.quickLinks}
             </h3>
             <ul className="space-y-3">
@@ -85,9 +89,9 @@ export default function Footer() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className={`flex items-center gap-3 text-base font-medium hover:text-purple-500 transition-all hover:translate-x-1 ${isDark ? "text-gray-400 hover:text-purple-400" : "text-gray-600 hover:text-purple-600"}`}
+                    className={`flex items-center gap-3 text-[15px] font-medium transition-all hover:translate-x-1 ${isDark ? "text-gray-400 hover:text-purple-400" : "text-gray-600 hover:text-purple-600"}`}
                   >
-                    <link.icon className="w-4 h-4" />
+                    <link.icon className="w-4 h-4 opacity-70" />
                     {link.label}
                   </Link>
                 </li>
@@ -97,13 +101,13 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className={`text-lg font-bold mb-6 uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h3 className={`text-sm font-bold mb-5 uppercase tracking-[0.2em] ${isDark ? "text-white" : "text-gray-900"}`}>
               {t.services}
             </h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className={`text-base font-medium block ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                  <span className={`text-[15px] font-medium block ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                     {service.label}
                   </span>
                 </li>
@@ -113,42 +117,42 @@ export default function Footer() {
 
           {/* Newsletter & Contact */}
           <div>
-            <h3 className={`text-lg font-bold mb-6 uppercase tracking-widest ${isDark ? "text-white" : "text-gray-900"}`}>
+            <h3 className={`text-sm font-bold mb-5 uppercase tracking-[0.2em] ${isDark ? "text-white" : "text-gray-900"}`}>
               {t.newsletter}
             </h3>
-            <p className={`text-base mb-6 leading-relaxed ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+            <p className={`text-[15px] mb-6 leading-relaxed ${isDark ? "text-gray-400" : "text-gray-600"}`}>
               {t.newsletterDesc}
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Phone className={`w-4 h-4 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
-                <span className={`text-base font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.phone}</span>
+                <Phone className="w-4 h-4 text-purple-500" />
+                <span className={`text-[15px] font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.phone}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className={`w-4 h-4 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
-                <span className={`text-base font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.email}</span>
+                <Mail className="w-4 h-4 text-purple-500" />
+                <span className={`text-[15px] font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.email}</span>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className={`w-4 h-4 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
-                <span className={`text-base font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.address}</span>
+                <MapPin className="w-4 h-4 text-purple-500" />
+                <span className={`text-[15px] font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t.address}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Social Links & Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-700/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-gray-700/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Social Icons */}
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2.5 rounded-lg border transition-all hover:scale-110 ${isDark ? "bg-gray-800 border-gray-700 text-gray-300 hover:text-white hover:border-purple-500" : "bg-white border-gray-200 text-gray-600 hover:text-purple-600 hover:border-purple-400"}`}
+                  className={`p-2 rounded-lg border transition-all hover:scale-105 ${isDark ? "bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-purple-500" : "bg-white border-gray-200 text-gray-500 hover:text-purple-600 hover:border-purple-400"}`}
                   aria-label={social.label}
                 >
                   <SocialIcon icon={social.icon} />
@@ -157,11 +161,11 @@ export default function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className={`text-sm md:text-base text-center md:text-right font-medium ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+            <div className={`text-sm text-center md:text-right font-medium ${isDark ? "text-gray-500" : "text-gray-500"}`}>
               <p>{t.copyright}</p>
-              <p className="flex items-center justify-center md:justify-end gap-2 mt-1">
+              <p className="flex items-center justify-center md:justify-end gap-1.5 mt-1">
                 {t.madeWith}
-                <Heart className="w-4 h-4 text-red-500 animate-pulse fill-red-500" />
+                <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
                 {t.by}
               </p>
             </div>
@@ -172,9 +176,8 @@ export default function Footer() {
   );
 }
 
-// Helper to keep the main component cleaner
 function SocialIcon({ icon }: { icon: string }) {
-  const className = "w-5 h-5";
+  const className = "w-4 h-4";
   switch (icon) {
     case "facebook": return <svg className={className} fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>;
     case "telegram": return <svg className={className} fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 8.146l-1.983 9.352c-.149.659-.538.822-1.091.512l-3.024-2.228-1.459 1.404c-.161.161-.297.297-.61.297l.217-3.083 5.611-5.07c.244-.217-.054-.338-.376-.123l-6.936 4.368-2.986-.934c-.649-.203-.661-.649.135-.96l11.666-4.496c.541-.197 1.014.128.836.964z"/></svg>;
