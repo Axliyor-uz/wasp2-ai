@@ -29,6 +29,6 @@
     "src/.next/types/**/*.ts",
     "src/.next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "next.config.js"  ],
   "exclude": ["src/node_modules"]
 }
