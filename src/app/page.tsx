@@ -1,18 +1,22 @@
-// src/app/page.tsx
-import HomeInteractive from "@/components/HomeInteractive";
+// page.tsx (Server Component)
+import HomeClient from "@/components/HomeInteractive";
 
-// Server Component: fetches data, passes to client
-export default async function HomePage() {
-  let data = null;
+export const dynamic = "force-dynamic";
 
+async function getPosts() {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       cache: "no-store",
     });
-    data = await res.json();
-  } catch (e) {
-    data = null;
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    return null;
   }
+}
 
-  return <HomeInteractive initialData={data} />;
+export default async function HomePage() {
+  const data = await getPosts();
+
+  return <HomeClient initialData={data} />;
 }
