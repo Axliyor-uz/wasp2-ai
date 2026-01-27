@@ -57,7 +57,7 @@ export default function Footer() {
   return (
     <footer className={`relative transition-colors duration-500 ${isDark ? "bg-gray-900" : "bg-gray-50"}`}>
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-40" />
+      <div className="absolute px-8 top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-40" />
       
       {/* Main footer content - Set to match Hero width */}
       <div className="max-w-[1440px] mx-auto px-8 py-20 lg:py-28"> 
