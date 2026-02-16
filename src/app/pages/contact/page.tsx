@@ -313,8 +313,8 @@ ${message}
       const value = e.target.value.replace(/\s/g, "");
       setTelegram(value);
     }}
-    pattern="^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$"
-    title="Enter a valid Telegram username (5-32 characters, letters, numbers, underscore)"
+    // pattern="^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$"
+    // title="Enter a valid Telegram username (5-32 characters, letters, numbers, underscore)"
     required
     disabled={loading}
   />
