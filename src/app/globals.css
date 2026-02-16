@@ -31,3 +31,23 @@ body {
 .dark .glass {
   background: rgba(0, 0, 0, 0.2);
 }
+
+
+/* Fix dark mode select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Dropdown menu items (the opened list) */
+select option {
+  background-color: #111111;
+  color: white;
+}
+
+/* Light mode */
+html:not(.dark) select option {
+  background-color: white;
+  color: black;
+}

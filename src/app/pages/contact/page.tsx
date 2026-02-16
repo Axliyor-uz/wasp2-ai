@@ -31,7 +31,7 @@ export default function Contact() {
 
   // Form state
   const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+  const [telegram, setTelegram] = useState("");
   const [service, setService] = useState<string>(t.services?.[0] || "");
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -58,7 +58,7 @@ export default function Contact() {
     e.preventDefault();
     setResult(null);
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    if (!name.trim() || !telegram.trim() || !message.trim()) {
       setResult({
         ok: false,
         text: "Please fill all required fields.",
@@ -71,12 +71,12 @@ export default function Contact() {
     }
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    const telegramRegex = /^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$/;
+    if (!telegramRegex.test(telegram)) {
       setResult({
         ok: false,
-        text: "Please enter a valid email address.",
-        error: "invalid_email",
+        text: "Please enter a valid Telegram username.",
+        error: "invalid_telegram",
         data: null,
         telegram: null,
         timestamp: new Date().toISOString(),
@@ -92,7 +92,7 @@ export default function Contact() {
 📬 *New Contact Form Submission*
 
 👤 *Name:* ${name}
-📧 *Email:* ${email}
+📧 *Telegram:* ${telegram}
 🎯 *Service:* ${service}
 
 💬 *Message:*
@@ -124,7 +124,7 @@ ${message}
           ok: true,
           text: "✅ Message sent successfully to Telegram! We'll contact you soon.",
           error: null,
-          data: { name, email, service, message },
+          data: { name, telegram, service, message },
           telegram: json,
           timestamp: now,
         };
@@ -132,7 +132,7 @@ ${message}
 
         // Reset form
         setName("");
-        setEmail("");
+        setTelegram("");
         setService(t.services?.[0] || "");
         setMessage("");
       } else {
@@ -142,7 +142,7 @@ ${message}
           ok: false,
           text: `Telegram error: ${errorMessage}`,
           error: json.error_code || "telegram_error",
-          data: { name, email, service, message },
+          data: { name, telegram, service, message },
           telegram: json,
           timestamp: now,
         });
@@ -153,7 +153,7 @@ ${message}
         ok: false,
         text: message,
         error: "network_error",
-        data: { name, email, service, message },
+        data: { name, telegram, service, message },
         telegram: null,
         timestamp: new Date().toISOString(),
       });
@@ -296,24 +296,62 @@ ${message}
                   required
                   disabled={loading}
                 />
-              </div>
-                <div className="space-y-2">
-                <label className="text-sm font-bold ml-2 opacity-70">{t.form.telegram}</label>
-                <input
-                  type="text"
-                  className={`w-full p-4 rounded-2xl border outline-none transition-all ${styles.input}`}
-                  placeholder="telegram username"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  disabled={loading}
-                />
-              </div>
+              <div className="space-y-2">
+  <label className="text-sm font-bold ml-2 opacity-70">
+    {t.form.telegram}
+  </label>
+
+  <input
+    type="text"
+    name="telegram"
+    className={`w-full p-4 rounded-2xl border outline-none transition-all ${styles.input}`}
+    placeholder="@username"
+    value={telegram}
+    onChange={(e) => {
+      // remove spaces automatically
+      const value = e.target.value.replace(/\s/g, "");
+      setTelegram(value);
+    }}
+    pattern="^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$"
+    title="Enter a valid Telegram username (5-32 characters, letters, numbers, underscore)"
+    required
+    disabled={loading}
+  />
+</div>
+</div>
+
      
              
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-bold ml-2 opacity-70">{t.form.service}</label>
-                <select
+
+<select
+  required
+  className={`
+    w-full p-4 rounded-2xl border outline-none transition-all
+    appearance-none
+    ${isDark 
+      ? "bg-neutral-900 text-white border-neutral-700" 
+      : "bg-white text-gray-700 border-gray-300"}
+    ${styles.input}
+  `}
+  value={service}
+  onChange={(e) => setService(e.target.value)}
+  disabled={loading}
+>
+  <option value="" disabled hidden>
+    "{"Choose a Service"}"
+  </option>
+
+  {t.services.map((s: string) => (
+    <option key={s} value={s}>
+      {s}
+    </option>
+  ))}
+</select>
+
+
+                {/* <select
                   className={`w-full p-4 rounded-2xl border outline-none transition-all ${isDark ? "text-gray-300" : "text-gray-600"} appearance-none ${styles.input}`}
                   value={service}
                   onChange={(e) => setService(e.target.value)}
@@ -324,7 +362,7 @@ ${message}
                       {s}
                     </option>
                   ))}
-                </select>
+                </select> */}
               </div>
               
 
@@ -413,5 +451,8 @@ ${message}
           &copy; 2026 Wasp-2 AI COLLECTIVE
         </footer>
     </div>
+
+
+
   );
 }

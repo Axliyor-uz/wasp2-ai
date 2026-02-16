@@ -56,12 +56,11 @@ export default function Footer() {
       {/* Subtle Top Divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
       
-      {/* Container Adjustments:
-          - px-10: More padding on mobile to keep content away from screen edges
-          - md:px-8: Standard padding for larger screens
-          - py-12 lg:py-16: Reduced vertical height
+      {/* UPDATED CONTAINER:
+          - Changed max-w-[1440px] to max-w-[1800px] (Increases width by ~25%)
+          - Kept other padding and margin settings
       */}
-      <div className="relative max-w-[1440px] mx-auto px-10 md:px-8 py-12 lg:py-16"> 
+      <div className="relative max-w-[1800px] mx-auto px-10 md:px-8 py-12 lg:py-16"> 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           
           {/* Company Info */}
