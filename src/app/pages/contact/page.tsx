@@ -296,6 +296,7 @@ ${message}
                   required
                   disabled={loading}
                 />
+                </div>
               <div className="space-y-2">
   <label className="text-sm font-bold ml-2 opacity-70">
     {t.form.telegram}
@@ -317,7 +318,6 @@ ${message}
     required
     disabled={loading}
   />
-</div>
 </div>
 
      
