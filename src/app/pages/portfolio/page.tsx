@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useApp } from "@/lib/AppContext";
+import { PORTFOLIO_DATA } from "@/lib/constants";
 import { 
   BarChart3, Globe2, ShoppingBag, 
   Activity, Truck, ArrowUpRight, Database, Lock, X, ExternalLink
@@ -12,115 +13,7 @@ import {
 // 1. DATA (Links included here)
 // =========================================================================
 
-const PORTFOLIO_DATA: any = {
-  en: {
-    hero: { title: "Our Shipments", subtitle: "Code that powers businesses worldwide.", button: "Get in touch" },
-    projects: [
-      { 
-        name: "FinTech Hub", category: "Finance", desc: "Highly secure transaction engine with real-time analytics.", tech: ["Next.js", "Redis"], iconKey: "finance" 
-      },
-      { 
-        name: "CryptoVault", category: "Blockchain", desc: "Non-custodial wallet infrastructure with multi-sig security.", tech: ["Rust", "Ethereum"], iconKey: "lock" 
-      },
-      { 
-        name: "EduSync Pro", 
-        category: "Education", 
-        desc: "LMS platform serving 50k+ students across Central Asia.", 
-        tech: ["React", "Go", "PostgreSQL"], 
-        iconKey: "globe",
-        link: "https://edify-student-b3qv.vercel.app/" // <--- LINK 1
-      },
-      { 
-        name: "LogiTrack", category: "Logistics", desc: "AI-driven route optimization for international freight.", tech: ["Python", "TensorFlow"], iconKey: "truck" 
-      },
-      { 
-        name: "HealthCore", 
-        category: "Medical", 
-        desc: "HIPAA-compliant patient data management system.", 
-        tech: ["Java", "AWS", "Spring Boot"], 
-        iconKey: "activity",
-        link: "https://healthplus-clinic-c3ru.vercel.app" // <--- LINK 2
-      },
-      { 
-        name: "ShopMax", category: "E-Commerce", desc: "High-concurrency storefront with global CDN integration.", tech: ["Vue", "Shopify"], iconKey: "shop" 
-      }
-      
-    ],
-    cta: "Your vision — our code.",
-    modalBtn: "Visit Website"
-  },
- ru: {
-    hero: { title: "Наши Проекты", subtitle: "Код, который развивает бизнес по всему миру.", button: "Связаться" },
-    projects: [
-      { 
-        name: "FinTech Hub", category: "Финансы", desc: "Высокобезопасный транзакционный движок с аналитикой в реальном времени.", tech: ["Next.js", "Redis"], iconKey: "finance" 
-      },
-      { 
-        name: "CryptoVault", category: "Блокчейн", desc: "Некастодиальная инфраструктура кошелька с мультисигнатурной защитой.", tech: ["Rust", "Ethereum"], iconKey: "lock" 
-      },
-      { 
-        name: "EduSync Pro", 
-        category: "Образование", 
-        desc: "LMS-платформа, обслуживающая 50к+ студентов в Центральной Азии.", 
-        tech: ["React", "Go", "PostgreSQL"], 
-        iconKey: "globe",
-        link: "https://edify-student-b3qv.vercel.app/" 
-      },
-      { 
-        name: "LogiTrack", category: "Логистика", desc: "Оптимизация маршрутов на базе ИИ для международных перевозок.", tech: ["Python", "TensorFlow"], iconKey: "truck" 
-      },
-      { 
-        name: "HealthCore", 
-        category: "Медицина", 
-        desc: "Система управления данными пациентов, соответствующая стандарту HIPAA.", 
-        tech: ["Java", "AWS", "Spring Boot"], 
-        iconKey: "activity",
-        link: "https://healthplus-clinic-c3ru.vercel.app" 
-      },
-      { 
-        name: "ShopMax", category: "E-Commerce", desc: "Высоконагруженная витрина с глобальной CDN-интеграцией.", tech: ["Vue", "Shopify"], iconKey: "shop" 
-      }
-    ],
-    cta: "Ваша идея — наш код.",
-    modalBtn: "Перейти на сайт"
-  },
 
-  uz: {
-    hero: { title: "Bizning Loyihalar", subtitle: "Butun dunyo bo'ylab biznesni rivojlantiruvchi kod.", button: "Bog'lanish" },
-    projects: [
-      { 
-        name: "FinTech Hub", category: "Moliya", desc: "Real vaqt rejimida tahlilga ega yuqori xavfsizlikdagi tranzaksiya tizimi.", tech: ["Next.js", "Redis"], iconKey: "finance" 
-      },
-      { 
-        name: "CryptoVault", category: "Blokcheyn", desc: "Ko'p bosqichli xavfsizlikka ega hamyon infratuzilmasi.", tech: ["Rust", "Ethereum"], iconKey: "lock" 
-      },
-      { 
-        name: "EduSync Pro", 
-        category: "Ta'lim", 
-        desc: "O'rta Osiyo bo'ylab 50 mingdan ortiq talabaga xizmat ko'rsatuvchi LMS platformasi.", 
-        tech: ["React", "Go", "PostgreSQL"], 
-        iconKey: "globe",
-        link: "https://edify-student-b3qv.vercel.app/" 
-      },
-      { 
-        name: "LogiTrack", category: "Logistika", desc: "Xalqaro yuk tashish uchun sun'iy intellektga asoslangan marshrutni optimallashtirish.", tech: ["Python", "TensorFlow"], iconKey: "truck" 
-      },
-      { 
-        name: "HealthCore", 
-        category: "Tibbiyot", 
-        desc: "HIPAA standartiga mos keluvchi bemor ma'lumotlarini boshqarish tizimi.", 
-        tech: ["Java", "AWS", "Spring Boot"], 
-        iconKey: "activity",
-        link: "https://healthplus-clinic-c3ru.vercel.app" 
-      },
-      { 
-        name: "ShopMax", category: "E-Commerce", desc: "Global CDN integratsiyasiga ega yuqori yuklamali onlayn do'kon.", tech: ["Vue", "Shopify"], iconKey: "shop" 
-      }
-    ],
-    cta: "Sizning g'oyangiz — bizning kodimiz.",
-    modalBtn: "Saytga o'tish"
-  }
-};
 
 const IconRegistry: Record<string, React.ReactNode> = {
   finance: <BarChart3 />, lock: <Lock />, globe: <Globe2 />,
