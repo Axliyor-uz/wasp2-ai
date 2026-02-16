@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   
   // This is the small logo (Favicon) you circled
   icons: {
-    icon: '/image.png', // Make sure 'logo.png' is in your 'public' folder
+    icon: '/favicon.png', // Make sure 'logo.png' is in your 'public' folder
   },
 };
 // -------------------------
