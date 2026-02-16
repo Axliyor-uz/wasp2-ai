@@ -32,7 +32,7 @@ export default function Contact() {
   // Form state
   const [name, setName] = useState<string>("");
   const [telegram, setTelegram] = useState("");
-  const [service, setService] = useState<string>(t.services?.[0] || "");
+  const [service, setService] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<Result>(null);
@@ -63,22 +63,6 @@ export default function Contact() {
         ok: false,
         text: "Please fill all required fields.",
         error: "validation_failed",
-        data: null,
-        telegram: null,
-        timestamp: new Date().toISOString(),
-      });
-      return;
-    }
-
-    // Email validation
-    const telegramRegex = /^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$/;
-    if (!telegramRegex.test(telegram)) {
-      setResult({
-        ok: false,
-        text: "Please enter a valid Telegram username.",
-        error: "invalid_telegram",
-        data: null,
-        telegram: null,
         timestamp: new Date().toISOString(),
       });
       return;
@@ -87,21 +71,23 @@ export default function Contact() {
     setLoading(true);
     
     try {
-      // Format message for Telegram
+      // ---------------------------------------------------------
+      // FIX 1: Switched to HTML tags (<b>) instead of Markdown (*)
+      // This prevents crashes when users type underscores (e.g. @user_name)
+      // ---------------------------------------------------------
       const telegramMessage = `
-📬 *New Contact Form Submission*
+📬 <b>New Contact Form Submission</b>
 
-👤 *Name:* ${name}
-📧 *Telegram:* ${telegram}
-🎯 *Service:* ${service}
+👤 <b>Name:</b> ${name}
+📧 <b>Telegram:</b> ${telegram}
+🎯 <b>Service:</b> ${service || "Not selected"}
 
-💬 *Message:*
+💬 <b>Message:</b>
 ${message}
 
-🕐 *Time:* ${new Date().toLocaleString()}
+🕐 <b>Time:</b> ${new Date().toLocaleString()}
       `.trim();
 
-      // Send to Telegram directly
       const resp = await fetch(
         `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
         {
@@ -110,7 +96,7 @@ ${message}
           body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
             text: telegramMessage,
-            parse_mode: "Markdown",
+            parse_mode: "HTML", // FIX 2: Changed from "Markdown" to "HTML"
           }),
         }
       );
@@ -119,31 +105,23 @@ ${message}
       const now = new Date().toISOString();
 
       if (resp.ok && json.ok) {
-        // Success - Telegram sent the message
-        const normalized: Result = {
+        setResult({
           ok: true,
           text: "✅ Message sent successfully to Telegram! We'll contact you soon.",
-          error: null,
-          data: { name, telegram, service, message },
-          telegram: json,
           timestamp: now,
-        };
-        setResult(normalized);
+        });
 
         // Reset form
         setName("");
         setTelegram("");
-        setService(t.services?.[0] || "");
+        setService("");
         setMessage("");
       } else {
-        // Telegram API error
         const errorMessage = json.description || "Failed to send to Telegram";
         setResult({
           ok: false,
           text: `Telegram error: ${errorMessage}`,
           error: json.error_code || "telegram_error",
-          data: { name, telegram, service, message },
-          telegram: json,
           timestamp: now,
         });
       }
@@ -153,8 +131,6 @@ ${message}
         ok: false,
         text: message,
         error: "network_error",
-        data: { name, telegram, service, message },
-        telegram: null,
         timestamp: new Date().toISOString(),
       });
     } finally {
@@ -201,83 +177,73 @@ ${message}
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">
-  {/* Left: Info Cards */}
-  <div className="space-y-4">
-    {[
-      { 
-        icon: Mail, 
-        label: t.info.email, 
-        val: "contact@wasp2.ai",
-        link: "mailto:contact@wasp2.ai",
-        type: "email"
-      },
-      { 
-        icon: Phone, 
-        label: t.info.phone, 
-        val: "+998 91 206 31 40",
-        link: "tel:+998912063140",
-        type: "phone"
-      },
-      { 
-        icon: MapPin, 
-        label: t.info.address, 
-        val: "Tashkent, Mirobod",
-        link: "https://maps.google.com/?q=Wasp2-Ai",
-        type: "address"
-      },
-      { 
-        icon: Clock, 
-        label: t.info.hours, 
-        val: "Mon-Fri, 08:00 - 18:00",
-        type: "hours"
-      },
-      { 
-        icon: FaTelegram, 
-        label: "Telegram", // Changed from t.info.hours to specific label
-        val: "Message us on Telegram",
-        link: "https://t.me/Akhliyor_uz", // Replace with your actual Telegram username
-        type: "telegram"
-      },
-    ].map((item, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: i * 0.1 }}
-        className={`p-6 rounded-3xl border ${styles.glass} flex items-center gap-5 hover:scale-[1.02] transition-transform ${
-          item.link ? "cursor-pointer hover:shadow-lg" : ""
-        }`}
-        onClick={() => {
-          if (item.link) {
-            if (item.type === "email" || item.type === "phone") {
-              window.location.href = item.link;
-            } else {
-              window.open(item.link, "_blank");
-            }
-          }
-        }}
-        role={item.link ? "button" : undefined}
-        tabIndex={item.link ? 0 : -1}
-        onKeyDown={(e) => {
-          if (item.link && e.key === "Enter") {
-            if (item.type === "email" || item.type === "phone") {
-              window.location.href = item.link;
-            } else {
-              window.open(item.link, "_blank");
-            }
-          }
-        }}
-      >
-        <div className={`p-3 rounded-2xl ${styles.bgAccent}`}>
-          <item.icon className={`w-6 h-6 ${styles.accent}`} />
-        </div>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-widest opacity-50">{item.label}</p>
-          <p className="font-semibold">{item.val}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
+          {/* Left: Info Cards */}
+          <div className="space-y-4">
+            {[
+              { 
+                icon: Mail, 
+                label: t.info.email, 
+                val: "contact@wasp2.ai",
+                link: "mailto:contact@wasp2.ai",
+                type: "email"
+              },
+              { 
+                icon: Phone, 
+                label: t.info.phone, 
+                val: "+998 91 206 31 40",
+                link: "tel:+998912063140",
+                type: "phone"
+              },
+              { 
+                icon: MapPin, 
+                label: t.info.address, 
+                val: "Tashkent, Mirobod",
+                link: "https://maps.google.com",
+                type: "address"
+              },
+              { 
+                icon: Clock, 
+                label: t.info.hours, 
+                val: "Mon-Fri, 08:00 - 18:00",
+                type: "hours"
+              },
+              { 
+                icon: FaTelegram, 
+                label: "Telegram", 
+                val: "Message us on Telegram",
+                link: "https://t.me/Akhliyor_uz", 
+                type: "telegram"
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className={`p-6 rounded-3xl border ${styles.glass} flex items-center gap-5 hover:scale-[1.02] transition-transform ${
+                  item.link ? "cursor-pointer hover:shadow-lg" : ""
+                }`}
+                onClick={() => {
+                  if (item.link) {
+                    if (item.type === "email" || item.type === "phone") {
+                      window.location.href = item.link;
+                    } else {
+                      window.open(item.link, "_blank");
+                    }
+                  }
+                }}
+              >
+                <div className={`p-3 rounded-2xl ${styles.bgAccent}`}>
+                  <item.icon className={`w-6 h-6 ${styles.accent}`} />
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest opacity-50">{item.label}</p>
+                  <p className="font-semibold">{item.val}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
           {/* Right: Form Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }} 
@@ -296,75 +262,54 @@ ${message}
                   required
                   disabled={loading}
                 />
-                </div>
+              </div>
+              
               <div className="space-y-2">
-  <label className="text-sm font-bold ml-2 opacity-70">
-    {t.form.telegram}
-  </label>
+                <label className="text-sm font-bold ml-2 opacity-70">{t.form.telegram}</label>
+                <input
+                  type="text"
+                  name="telegram"
+                  className={`w-full p-4 rounded-2xl border outline-none transition-all ${styles.input}`}
+                  placeholder="@username"
+                  value={telegram}
+                  onChange={(e) => {
+                    // remove spaces automatically
+                    const value = e.target.value.replace(/\s/g, "");
+                    setTelegram(value);
+                  }}
+                  required
+                  disabled={loading}
+                />
+              </div>
 
-  <input
-    type="text"
-    name="telegram"
-    className={`w-full p-4 rounded-2xl border outline-none transition-all ${styles.input}`}
-    placeholder="@username"
-    value={telegram}
-    onChange={(e) => {
-      // remove spaces automatically
-      const value = e.target.value.replace(/\s/g, "");
-      setTelegram(value);
-    }}
-    // pattern="^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$"
-    // title="Enter a valid Telegram username (5-32 characters, letters, numbers, underscore)"
-    required
-    disabled={loading}
-  />
-</div>
-
-     
-             
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-bold ml-2 opacity-70">{t.form.service}</label>
-
-<select
-  required
-  className={`
-    w-full p-4 rounded-2xl border outline-none transition-all
-    appearance-none
-    ${isDark 
-      ? "bg-neutral-900 text-white border-neutral-700" 
-      : "bg-white text-gray-700 border-gray-300"}
-    ${styles.input}
-  `}
-  value={service}
-  onChange={(e) => setService(e.target.value)}
-  disabled={loading}
->
-  <option value="" disabled hidden>
-    "{"Choose a Service"}"
-  </option>
-
-  {t.services.map((s: string) => (
-    <option key={s} value={s}>
-      {s}
-    </option>
-  ))}
-</select>
-
-
-                {/* <select
-                  className={`w-full p-4 rounded-2xl border outline-none transition-all ${isDark ? "text-gray-300" : "text-gray-600"} appearance-none ${styles.input}`}
+                <select
+                  required
+                  className={`
+                    w-full p-4 rounded-2xl border outline-none transition-all
+                    appearance-none
+                    ${isDark 
+                      ? "bg-neutral-900 text-white border-neutral-700" 
+                      : "bg-white text-gray-700 border-gray-300"}
+                    ${styles.input}
+                  `}
                   value={service}
                   onChange={(e) => setService(e.target.value)}
                   disabled={loading}
                 >
+                  {/* FIX 3: Removed extra quotes around the default option */}
+                  <option value="" disabled hidden>
+                    Choose a Service
+                  </option>
+
                   {t.services.map((s: string) => (
                     <option key={s} value={s}>
                       {s}
                     </option>
                   ))}
-                </select> */}
+                </select>
               </div>
-              
 
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-bold ml-2 opacity-70">{t.form.msg}</label>
@@ -399,7 +344,6 @@ ${message}
                 <span>{t.success}</span>
               </div>
 
-              {/* Result display: shows result.text and other fields */}
               {result && (
                 <div
                   className={`mt-4 w-full max-w-xl rounded-lg p-4 ${
@@ -416,43 +360,16 @@ ${message}
                     <div className="font-semibold">{result.ok ? "✅ Success" : "❌ Error"}</div>
                     <div className="text-xs opacity-70">{new Date(result.timestamp).toLocaleTimeString()}</div>
                   </div>
-
                   <div className="mt-2 text-sm">{result.text}</div>
-
-                  {/* Optional server error code */}
-                  {result.error && (
-                    <div className={`mt-2 text-xs ${result.ok ? 'text-green-700' : 'text-red-700'}`}>
-                      <strong>Error code:</strong> {result.error}
-                    </div>
-                  )}
-
-                  {/* Show returned submission/data if present
-                  {result.data && (
-                    <div className="mt-3 text-left text-xs bg-white/5 p-2 rounded overflow-auto max-h-48">
-                      <div className="font-medium mb-1">Submitted Data</div>
-                      <pre className="whitespace-pre-wrap">{JSON.stringify(result.data, null, 2)}</pre>
-                    </div>
-                  )}
-
-                  Show telegram API response if server returned it
-                  {result.telegram && (
-                    <div className="mt-3 text-left text-xs bg-white/5 p-2 rounded overflow-auto max-h-48">
-                      <div className="font-medium mb-1">Telegram Response</div>
-                      <pre className="whitespace-pre-wrap">{JSON.stringify(result.telegram, null, 2)}</pre>
-                    </div>
-                  )} */}
                 </div>
               )}
             </div>
           </motion.div>
         </div>
       </div>
-        <footer className="mt-16 text-center opacity-30 text-[9px] tracking-[0.3em] uppercase pb-8">
-          &copy; 2026 Wasp-2 AI COLLECTIVE
-        </footer>
+      <footer className="mt-16 text-center opacity-30 text-[9px] tracking-[0.3em] uppercase pb-8">
+        © 2026 Wasp-2 AI COLLECTIVE
+      </footer>
     </div>
-
-
-
   );
 }
