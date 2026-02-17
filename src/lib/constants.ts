@@ -1,4 +1,6 @@
-import {FlaskConical, Sigma, Languages,FileText,Zap,Briefcase,User} from 'lucide-react';
+import {FlaskConical,Send, Github, Linkedin , Sigma, Languages,FileText,Zap,Briefcase,User} from 'lucide-react';
+// Blogs(team)translations and content
+
 
 
 // translations.js or at the top of your file
@@ -342,43 +344,6 @@ export const contentForContact = {
       services: ["Разработка приложений", "Веб-решения", "AI Автоматизация", "Другое"],
       success: "Мы обычно отвечаем в течение 24 часов 🚀"
     }
-  };
-
-
-  export const contentForBlog: any ={
-    en: {
-      title: "The Logic Behind the Magic",
-      subtitle: "5 Minds. 1 Goal. Flawless Execution.",
-      bossName: "Shahzodbek",
-      dev: "Developer",
-      features: "Why We're Different",
-      features2:"Built on trust, transparency, and top-tier engineering",
-      feat1: "Deep Sync Architecture",
-      feat2: "Multilingual Codebases",
-      feat3: "Performance First"
-    },
-    uz: {
-  title: "Sehrning Orqasidagi Mantiq",
-  subtitle: "5 Ong. 1 Maqsad. Mukammal Bajarish.",
-  bossName: "Shahzodbek",
-  dev: "Dasturchi",
-  features: "Nega Biz Boshqacha",
-  features2: "Ishonch, shaffoflik va yuqori darajadagi muhandislik asosida qurilgan",
-  feat1: "Chuqur Sinxronizatsiya Arxitekturasi",
-  feat2: "Ko'p Tillarda Kodlar",
-  feat3: "Birinchi O'rinda Samaradorlik"
-},
-    ru: {
-  title: "Логика за Волшебством",
-  subtitle: "5 Умов. 1 Цель. Безупречное Исполнение.",
-  bossName: "Shahzodbek",
-  dev: "Разработчик",
-  features: "Чем Мы Отличаемся",
-  features2:"Построено на доверии, прозрачности и высококлассной инженерии",
-  feat1: "Глубокая Синхронная Архитектура",
-  feat2: "Многоязычные Кодовые Базы",
-  feat3: "Приоритет Производительности"
-}
   };
 
 
@@ -782,5 +747,150 @@ export const PORTFOLIO_DATA: any = {
 };
 
 
+
+// 1. General UI Translations (Title, subtitles, features)
+export const contentForBlog = {
+  en: {
+
+        
+    title: "The Logic Behind the Magic",
+      subtitle: "5 Minds. 1 Goal. Flawless Execution.",
+      bossName: "Shahzodbek",
+      dev: "Developer",
+      features: "Why We're Different",
+      features2:"Built on trust, transparency, and top-tier engineering",
+      feat1: "Deep Sync Architecture",
+      feat2: "Multilingual Codebases",
+      feat3: "Performance First"
+  },
+  uz: {
+    
+      title: "Sehrning Orqasidagi Mantiq",
+  subtitle: "5 Ong. 1 Maqsad. Mukammal Bajarish.",
+  bossName: "Shahzodbek",
+  dev: "Dasturchi",
+  features: "Nega Biz Boshqacha",
+  features2: "Ishonch, shaffoflik va yuqori darajadagi muhandislik asosida qurilgan",
+  feat1: "Chuqur Sinxronizatsiya Arxitekturasi",
+  feat2: "Ko'p Tillarda Kodlar",
+  feat3: "Birinchi O'rinda Samaradorlik"
+  },
+  ru: {
+    
+    title: "Логика за Волшебством",
+  subtitle: "5 Умов. 1 Цель. Безупречное Исполнение.",
+  bossName: "Shahzodbek",
+  dev: "Разработчик",
+  features: "Чем Мы Отличаемся",
+  features2:"Построено на доверии, прозрачности и высококлассной инженерии",
+  feat1: "Глубокая Синхронная Архитектура",
+  feat2: "Многоязычные Кодовые Базы",
+  feat3: "Приоритет Производительности"
+  }
+};
+
+// 2. Team Text Data (Translations per language)
+export const teamTranslations = {
+  en: [
+    {
+      name: "Shahzodbek (Boss)",
+      role: "Team Lead & CEO",
+      skills: ["Strategy", "Architecture", "Leadership", "Vision"],
+      bio: "The bridge between business vision and high-performance execution. Leading the charge towards technological singularity."
+    },
+    {
+      name: "Shohboz Yunusaliyev",
+      role: "Backend Dev",
+      skills: ["Node.js", "AWS", "PostgreSQL", "Redis"],
+      bio: "Master of high-concurrency systems and database optimization. If it scales, he built it."
+    },
+    {
+      name: "Bahodir Qahhoraliyev",
+      role: "Frontend Dev",
+      skills: ["React", "GSAP", "Three.js", "Tailwind"],
+      bio: "Transforming static designs into fluid interactive experiences. Pixel perfectionist."
+    },
+    {
+      name: "Ahliyor Tojiboyev",
+      role: "Security Lead",
+      skills: ["Pen-Test", "Docker", "Kubernetes", "CI/CD"],
+      bio: "Ensuring zero-vulnerability and 99.9% system uptime. The digital fortress architect."
+    },
+    {
+      name: "Umidjon Jumaqulov",
+      role: "Full-Stack",
+      skills: ["Next.js", "Python", "GraphQL", "Prisma"],
+      bio: "Rapid prototyping specialist turning ideas into MVP in record time. Code never sleeps."
+    }
+  ],
+  uz: [
+    {
+      name: "Shahzodbek (Boss)",
+      role: "Jamoa Rahbari & CEO",
+      skills: ["Strategiya", "Arxitektura", "Liderlik", "Vizyon"],
+      bio: "Biznes vizyoni va yuqori samarali ijro o'rtasidagi ko'prik. Texnologik yagonalik sari yetakchi."
+    },
+    {
+      name: "Shohboz Yunusaliyev",
+      role: "Backend Dasturchi",
+      skills: ["Node.js", "AWS", "PostgreSQL", "Redis"],
+      bio: "Yuqori oqimli tizimlar va ma'lumotlar bazasini optimallashtirish ustasi. Agar u masshtablansa, demak u qurgan."
+    },
+    {
+      name: "Bahodir Qahhoraliyev",
+      role: "Frontend Dasturchi",
+      skills: ["React", "GSAP", "Three.js", "Tailwind"],
+      bio: "Statik dizaynlarni jonli interaktiv tajribalarga aylantiradi. Piksel darajasidagi aniqlik."
+    },
+    {
+      name: "Ahliyor Tojiboyev",
+      role: "Xavfsizlik Bo'yicha Yetakchi",
+      skills: ["Pen-Test", "Docker", "Kubernetes", "CI/CD"],
+      bio: "Nol zaiflik va 99.9% tizim ishlashini ta'minlaydi. Raqamli qal'a me'mori."
+    },
+    {
+      name: "Umidjon Jumaqulov",
+      role: "Full-Stack Dasturchi",
+      skills: ["Next.js", "Python", "GraphQL", "Prisma"],
+      bio: "G'oyalarni rekord vaqt ichida MVP ga aylantiruvchi tezkor prototiplash mutaxassisi. Kod hech qachon uxlamaydi."
+    }
+  ],
+  ru: [
+    {
+      name: "Shahzodbek (Boss)",
+      role: "Тимлид и CEO",
+      skills: ["Стратегия", "Архитектура", "Лидерство", "Видение"],
+      bio: "Мост между бизнес-видением и высокоэффективным исполнением. Ведет к технологической сингулярности."
+    },
+    {
+      name: "Шохбоз Юнусалиев",
+      role: "Backend Разработчик",
+      skills: ["Node.js", "AWS", "PostgreSQL", "Redis"],
+      bio: "Мастер высоконагруженных систем и оптимизации баз данных. Если это масштабируется, значит, это построил он."
+    },
+    {
+      name: "Баходир Каххоралиев",
+      role: "Frontend Разработчик",
+      skills: ["React", "GSAP", "Three.js", "Tailwind"],
+      bio: "Превращает статические дизайны в живой интерактивный опыт. Пиксельный перфекционист."
+    },
+    {
+      name: "Ахлиёр Тожибоев",
+      role: "Ведущий по безопасности",
+      skills: ["Pen-Test", "Docker", "Kubernetes", "CI/CD"],
+      bio: "Обеспечение нулевой уязвимости и аптайма 99.9%. Архитектор цифровой крепости."
+    },
+    {
+      name: "Умиджон Жумакулов",
+      role: "Full-Stack Разработчик",
+      skills: ["Next.js", "Python", "GraphQL", "Prisma"],
+      bio: "Специалист по быстрому прототипированию, превращающий идеи в MVP в рекордно короткие сроки."
+    }
+  ]
+};
+
+
+
+// 4. Helper function to merge data
 
 
