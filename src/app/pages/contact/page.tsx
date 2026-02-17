@@ -198,7 +198,7 @@ ${message}
                 icon: MapPin, 
                 label: t.info.address, 
                 val: "Tashkent, Mirobod",
-                link: "https://maps.google.com",
+                link: "https://www.google.com/maps/place/Wasp2-AI/@41.296807,69.2700834,17z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b5edffb6643:0x9eedf70ef5060ab!8m2!3d41.296807!4d69.2726583!16s%2Fg%2F11mzwlhy0t?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D",
                 type: "address"
               },
               { 

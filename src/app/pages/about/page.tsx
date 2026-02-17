@@ -148,7 +148,7 @@ const About = () => {
             ${isDark ? 'border-purple-500/30 shadow-2xl shadow-purple-500/10' : 'border-blue-500/30 shadow-xl'}`}>
             
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.944203114995!2d69.2664413!3d41.2994958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8ad590924191%3A0x6960d7c71360170a!2sMirabad%20District%2C%20Tashkent!5e0!3m2!1sen!2s!4v1700000000000"
+              src="https://www.google.com/maps/place/Wasp2-AI/@41.296807,69.2700834,17z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b5edffb6643:0x9eedf70ef5060ab!8m2!3d41.296807!4d69.2726583!16s%2Fg%2F11mzwlhy0t?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
               className={`w-full h-full grayscale-[0.8] contrast-[1.1] opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700
                 ${isDark ? 'invert-[0.9] hue-rotate-[260deg]' : ''}`}
               loading="lazy"
@@ -163,7 +163,7 @@ const About = () => {
                 <p className="text-[12px] opacity-70 font-medium">{t.address}</p>
               </div>
               <a 
-                href="https://maps.google.com" 
+                href="https://www.google.com/maps/place/Wasp2-AI/@41.296807,69.2700834,17z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b5edffb6643:0x9eedf70ef5060ab!8m2!3d41.296807!4d69.2726583!16s%2Fg%2F11mzwlhy0t?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D" 
                 target="_blank" 
                 className={`p-3 rounded-full ${isDark ? 'bg-purple-600 hover:bg-purple-500' : 'bg-blue-600 hover:bg-blue-500'} text-white transition-all shadow-lg`}
               >
