@@ -148,7 +148,8 @@ const About = () => {
             ${isDark ? 'border-purple-500/30 shadow-2xl shadow-purple-500/10' : 'border-blue-500/30 shadow-xl'}`}>
             
             <iframe 
-              src="https://www.google.com/maps/place/Wasp2-AI/@41.296807,69.2700834,17z/data=!3m1!4b1!4m6!3m5!1s0x38ae8b5edffb6643:0x9eedf70ef5060ab!8m2!3d41.296807!4d69.2726583!16s%2Fg%2F11mzwlhy0t?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+            
+              src="https://www.google.com/maps/@41.3597696,69.255168,8z?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
               className={`w-full h-full grayscale-[0.8] contrast-[1.1] opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700
                 ${isDark ? 'invert-[0.9] hue-rotate-[260deg]' : ''}`}
               loading="lazy"
