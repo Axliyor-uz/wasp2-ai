@@ -748,55 +748,54 @@ export const PORTFOLIO_DATA: any = {
 
 
 
-// 1. General UI Translations (Title, subtitles, features)
+
+// ==========================================
+//  Team translations
+// ==========================================
+
+
 export const contentForBlog = {
   en: {
-
-        
     title: "The Logic Behind the Magic",
-      subtitle: "5 Minds. 1 Goal. Flawless Execution.",
-      bossName: "Shahzodbek",
-      dev: "Developer",
-      features: "Why We're Different",
-      features2:"Built on trust, transparency, and top-tier engineering",
-      feat1: "Deep Sync Architecture",
-      feat2: "Multilingual Codebases",
-      feat3: "Performance First"
+    subtitle: "5 Minds. 1 Goal. Flawless Execution.",
+    features: "Why We're Different",
+    features2: "Built on trust, transparency, and top-tier engineering",
+    feat1: "Deep Sync Architecture",
+    feat2: "Multilingual Codebases",
+    feat3: "Performance First"
   },
   uz: {
-    
-      title: "Sehrning Orqasidagi Mantiq",
-  subtitle: "5 Ong. 1 Maqsad. Mukammal Bajarish.",
-  bossName: "Shahzodbek",
-  dev: "Dasturchi",
-  features: "Nega Biz Boshqacha",
-  features2: "Ishonch, shaffoflik va yuqori darajadagi muhandislik asosida qurilgan",
-  feat1: "Chuqur Sinxronizatsiya Arxitekturasi",
-  feat2: "Ko'p Tillarda Kodlar",
-  feat3: "Birinchi O'rinda Samaradorlik"
+    title: "Sehrning Orqasidagi Mantiq",
+    subtitle: "5 Ong. 1 Maqsad. Mukammal Bajarish.",
+    features: "Nega Biz Boshqacha",
+    features2: "Ishonch, shaffoflik va yuqori darajadagi muhandislik asosida qurilgan",
+    feat1: "Chuqur Sinxronizatsiya Arxitekturasi",
+    feat2: "Ko'p Tillarda Kodlar",
+    feat3: "Birinchi O'rinda Samaradorlik"
   },
   ru: {
-    
     title: "Логика за Волшебством",
-  subtitle: "5 Умов. 1 Цель. Безупречное Исполнение.",
-  bossName: "Shahzodbek",
-  dev: "Разработчик",
-  features: "Чем Мы Отличаемся",
-  features2:"Построено на доверии, прозрачности и высококлассной инженерии",
-  feat1: "Глубокая Синхронная Архитектура",
-  feat2: "Многоязычные Кодовые Базы",
-  feat3: "Приоритет Производительности"
+    subtitle: "5 Умов. 1 Цель. Безупречное Исполнение.",
+    features: "Чем Мы Отличаемся",
+    features2: "Построено на доверии, прозрачности и высококлассной инженерии",
+    feat1: "Глубокая Синхронная Архитектура",
+    feat2: "Многоязычные Кодовые Базы",
+    feat3: "Приоритет Производительности"
   }
 };
 
-// 2. Team Text Data (Translations per language)
-export const teamTranslations: any = {
+
+
+
+
+
+export const teamTranslations = {
   en: [
     {
       name: "Shahzodbek (Boss)",
       role: "Team Lead & CEO",
       skills: ["Strategy", "Architecture", "Leadership", "Vision"],
-      bio: "The bridge between business vision and high-performance execution. Leading the charge towards technological singularity."
+      bio: "The bridge between business vision and high-performance execution. Leading the charge towards technological singularity.",
     },
     {
       name: "Shohboz Yunusaliyev",
@@ -888,7 +887,6 @@ export const teamTranslations: any = {
     }
   ]
 };
-
 
 
 // 4. Helper function to merge data
