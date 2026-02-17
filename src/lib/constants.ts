@@ -790,7 +790,7 @@ export const contentForBlog = {
 };
 
 // 2. Team Text Data (Translations per language)
-export const teamTranslations = {
+export const teamTranslations: any = {
   en: [
     {
       name: "Shahzodbek (Boss)",

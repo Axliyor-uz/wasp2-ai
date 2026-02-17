@@ -3,7 +3,7 @@
 import React from 'react';
 import { Send, Github, Linkedin } from 'lucide-react';
 import { useApp } from "@/lib/AppContext"; // Adjust your import path
-import teamTranslations, { contentForBlog } from '@/lib/constants'; // Importing from File 1
+import  { contentForBlog, teamTranslations } from '@/lib/constants'; // Importing from File 1
 import { Terminal, Cpu, Code, Shield, Coffee } from 'lucide-react';
 const Blog = () => {
   const { lang, theme } = useApp();
