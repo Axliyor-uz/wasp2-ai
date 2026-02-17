@@ -115,12 +115,12 @@ const Blog = () => {
     {
       icon: <Cpu className="w-4 h-4" />,
       photoUrl: "/backgrounds/backend.webp",
-      socials: { github: "https://github.com/", linkedin: "https://linkedin.com/in/", telegram: "https://t.me/@Shohboz06" }
+      socials: { github: "https://github.com/", linkedin: "https://linkedin.com/in/", telegram: "https://t.me/Shohboz06" }
     },
     {
       icon: <Code className="w-4 h-4" />,
       photoUrl: "/backgrounds/web.jpg",
-      socials: { github: "https://github.com/bahodirdev", linkedin: "https://linkedin.com/in/bahodir", telegram: "https://t.me/@Inet_code" }
+      socials: { github: "https://github.com/Inetcodegg", linkedin: "https://linkedin.com/in/", telegram: "https://t.me/Inet_code" }
     },
     {
       icon: <Shield className="w-4 h-4" />,
