@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Code, Cpu, Shield, Zap, Coffee, Terminal, Layers, Box, LineChart, ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { Code, Cpu, Shield, Zap, Coffee, Send,  Terminal, Layers, Box, LineChart, ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
 import { contentForBlog } from '@/lib/constants';
 import { useApp } from "@/lib/AppContext";
 
@@ -16,23 +16,38 @@ const Blog = () => {
       icon: <Terminal className="w-5 h-5" />, 
       photoUrl: "/backgrounds/boss.jpg",
       skills: ["Strategy", "Architecture", "Leadership", "Vision"],
-      bio: "The bridge between business vision and high-performance execution. Leading the charge towards technological singularity." 
+      bio: "The bridge between business vision and high-performance execution. Leading the charge towards technological singularity." ,
+      socials: {
+    github: "https://github.com/",   
+    linkedin: "https://linkedin.com/in/", 
+    telegram: "https://t.me/"        
+  }
     },
     { 
-      name: "Umidjon Jumaqulov", 
+      name: "Shohboz Yunusaliyev", 
       role: "Backend Dev", 
       icon: <Cpu className="w-4 h-4" />, 
       photoUrl: "/backgrounds/backend.webp",
       skills: ["Node.js", "AWS", "PostgreSQL", "Redis"],
-      bio: "Master of high-concurrency systems and database optimization. If it scales, he built it." 
+      bio: "Master of high-concurrency systems and database optimization. If it scales, he built it." ,
+      socials: {
+    github: "https://github.com/",   
+    linkedin: "https://linkedin.com/in/", 
+    telegram: "https://t.me/@Shohboz06"        
+  }
     },
     { 
-      name: "Shohboz Yunusaliyev", 
+      name: "Bahodir Qahhoraliyev", 
       role: "Frontend Dev", 
       icon: <Code className="w-4 h-4" />, 
       photoUrl: "/backgrounds/web.jpg",
       skills: ["React", "GSAP", "Three.js", "Tailwind"],
-      bio: "Transforming static designs into fluid interactive experiences. Pixel perfectionist." 
+      bio: "Transforming static designs into fluid interactive experiences. Pixel perfectionist." ,
+      socials: {
+    github: "https://github.com/bahodirdev",   
+    linkedin: "https://linkedin.com/in/bahodir", 
+    telegram: "https://t.me/@Inet_code"        
+  }
     },
     { 
       name: "Ahliyor Tojiboyev", 
@@ -40,21 +55,30 @@ const Blog = () => {
       icon: <Shield className="w-4 h-4" />, 
       photoUrl: "/backgrounds/vyber.webp",
       skills: ["Pen-Test", "Docker", "Kubernetes", "CI/CD"],
-      bio: "Ensuring zero-vulnerability and 99.9% system uptime. The digital fortress architect." 
+      bio: "Ensuring zero-vulnerability and 99.9% system uptime. The digital fortress architect." ,
+      socials: {
+    github: "https://github.com/Axliyor-uz",   
+    linkedin: "https://linkedin.com/in/Axliyor-uz", 
+    telegram: "https://t.me/Akhliyor_uz"        
+  }
     },
-    { 
-      name: "Bahodir Qahhoraliyev", 
-      role: "Full-Stack", 
-      icon: <Coffee className="w-4 h-4" />, 
-      photoUrl: "/backgrounds/fullStack.png",
-      skills: ["Next.js", "Python", "GraphQL", "Prisma"],
-      bio: "Rapid prototyping specialist turning ideas into MVP in record time. Code never sleeps." 
-    },
+{ 
+  name: "Umidjon Jumaqulov", 
+  role: "Full-Stack", 
+  icon: <Coffee className="w-4 h-4" />, 
+  photoUrl: "/backgrounds/fullStack.png", 
+  skills: ["Next.js", "Python", "GraphQL", "Prisma"],
+  bio: "Rapid prototyping specialist turning ideas into MVP in record time. Code never sleeps.",
+  socials: {
+    github: "https://github.com/umidjon0339",   
+    linkedin: "https://linkedin.com/in/ujcodes", 
+    telegram: "https://t.me/U_m_i_d_j_o_n_006"        
+  }
+},
   ];
 
   const t = contentForBlog[lang];
 
-  // Helper component to keep the main JSX clean
   // Handles the Flip Logic
   const FlipCard = ({ member, heightClass, isHero = false }) => (
     <div className={`group relative w-full ${heightClass} [perspective:1000px]`}>
@@ -93,10 +117,59 @@ const Blog = () => {
              <div className={`p-2 rounded-lg ${isDark ? 'bg-purple-500/10 text-purple-400' : 'bg-blue-500/10 text-blue-600'}`}>
                 {member.icon}
              </div>
-             <div className="flex gap-2">
-                <Github size={16} className="opacity-50 hover:opacity-100 cursor-pointer transition-opacity" />
-                <Linkedin size={16} className="opacity-50 hover:opacity-100 cursor-pointer transition-opacity" />
-             </div>
+             {/* ... inside the Back Side of the card ... */}
+
+<div className="flex justify-between items-start mb-4">
+  {/* Role Icon */}
+  <div className={`p-2 rounded-lg ${isDark ? 'bg-purple-500/10 text-purple-400' : 'bg-blue-500/10 text-blue-600'}`}>
+    {member.icon}
+  </div>
+
+  {/* ✅ SOCIAL ICONS SECTION */}
+  <div className="flex gap-3">
+    
+    {/* 1. Github */}
+    {member.socials?.github && (
+      <a 
+        href={member.socials.github} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        // This stops the card from flipping/closing when you click the link
+        onClick={(e) => e.stopPropagation()} 
+        className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110"
+      >
+        <Github size={18} />
+      </a>
+    )}
+
+    {/* 2. LinkedIn */}
+    {member.socials?.linkedin && (
+      <a 
+        href={member.socials.linkedin} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110"
+      >
+        <Linkedin size={18} />
+      </a>
+    )}
+
+    {/* 3. Telegram (Using Send icon) */}
+    {member.socials?.telegram && (
+      <a 
+        href={member.socials.telegram} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110"
+      >
+        <Send size={18} />
+      </a>
+    )}
+    
+  </div>
+</div>
           </div>
 
           {/* Main Info */}
