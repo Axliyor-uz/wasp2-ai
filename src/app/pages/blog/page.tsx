@@ -43,58 +43,62 @@ const FlipCard = ({ data, heightClass, isHero = false, isDark }) => (
       </div>
 
       {/* BACK SIDE */}
-      <div className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] border border-white/10 flex flex-col p-6 ${isDark ? 'bg-slate-900/95' : 'bg-slate-100/95'} backdrop-blur-xl`}>
-        
-        <div className="flex justify-between items-start mb-4">
-           <div className={`p-2 rounded-lg ${isDark ? 'bg-purple-500/10 text-purple-400' : 'bg-blue-500/10 text-blue-600'}`}>
-              {data.icon}
-           </div>
+      <div className={`absolute inset-0 w-full h-full rounded-2xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] border border-white/10 flex flex-col p-5 ${isDark ? 'bg-slate-900/95' : 'bg-slate-100/95'} backdrop-blur-xl`}>
+    
+    {/* Header: Icon & Socials */}
+    <div className="flex justify-between items-start mb-3">
+       <div className={`p-1.5 rounded-lg ${isDark ? 'bg-purple-500/10 text-purple-400' : 'bg-blue-500/10 text-blue-600'}`}>
+          {/* Assuming data.icon is an SVG, you might want to wrap it in a div with w-4 h-4 if it doesn't resize automatically */}
+          {data.icon}
+       </div>
 
-           <div className="flex gap-3">
-              {data.socials?.github && (
-                <a href={data.socials.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
-                  <Github size={18} />
-                </a>
-              )}
-              {data.socials?.linkedin && (
-                <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
-                  <Linkedin size={18} />
-                </a>
-              )}
-              {data.socials?.telegram && (
-                <a href={data.socials.telegram} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
-                  <Send size={18} />
-                </a>
-              )}
-           </div>
-        </div>
+       <div className="flex gap-2">
+          {data.socials?.github && (
+            <a href={data.socials.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
+              <Github size={16} />
+            </a>
+          )}
+          {data.socials?.linkedin && (
+            <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
+              <Linkedin size={16} />
+            </a>
+          )}
+          {data.socials?.telegram && (
+            <a href={data.socials.telegram} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="opacity-50 hover:opacity-100 transition-all hover:text-blue-500 hover:scale-110">
+              <Send size={16} />
+            </a>
+          )}
+       </div>
+    </div>
 
-        <div className="flex-grow">
-          <h4 className={`font-bold mb-1 ${isDark ? 'text-white' : 'text-slate-900'} ${isHero ? 'text-2xl' : 'text-lg'}`}>
-            {data.name}
-          </h4>
-          <p className={`text-[10px] font-bold uppercase mb-4 ${isDark ? 'text-purple-400' : 'text-blue-600'}`}>
-            {data.role}
-          </p>
-          <p className={`text-sm leading-relaxed mb-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-            "{data.bio}"
-          </p>
-        </div>
+    {/* Main Content: Name, Role, Bio */}
+    <div className="flex-grow">
+      <h4 className={`font-bold mb-0.5 ${isDark ? 'text-white' : 'text-slate-900'} ${isHero ? 'text-xl' : 'text-base'}`}>
+        {data.name}
+      </h4>
+      <p className={`text-[9px] font-bold uppercase mb-3 ${isDark ? 'text-purple-400' : 'text-blue-600'}`}>
+        {data.role}
+      </p>
+      <p className={`text-xs leading-relaxed mb-3 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+        "{data.bio}"
+      </p>
+    </div>
 
-        <div>
-          <p className="text-[9px] uppercase tracking-widest opacity-40 mb-2">Expertise</p>
-          <div className="flex flex-wrap gap-1.5">
-            {data.skills.map(s => (
-              <span key={s} className={`px-2 py-1 rounded text-[9px] font-bold border uppercase ${isDark ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-black/5 border-black/5 text-slate-700'}`}>
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-
+    {/* Footer: Expertise Tags */}
+    <div>
+      <p className="text-[8px] uppercase tracking-widest opacity-40 mb-1.5">Expertise</p>
+      <div className="flex flex-wrap gap-1">
+        {data.skills.map(s => (
+          <span key={s} className={`px-1.5 py-0.5 rounded text-[8px] font-bold border uppercase ${isDark ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-black/5 border-black/5 text-slate-700'}`}>
+            {s}
+          </span>
+        ))}
       </div>
     </div>
-  </div>
+</div>
+      </div>
+    </div>
+
 );
 
 // ==========================================
@@ -110,7 +114,7 @@ const Blog = () => {
     {
       icon: <Terminal className="w-5 h-5" />,
       photoUrl: "/backgrounds/boss.jpg",
-      socials: { github: "https://github.com/", linkedin: "https://linkedin.com/in/", telegram: "https://t.me/" }
+      socials: { github: "https://github.com/aibuttonfoundation", linkedin: "https://linkedin.com/in/shahzodbek-xujamnazarov-5823b83a8/", telegram: "https://t.me/Ton10_Ton11" }
     },
     {
       icon: <Cpu className="w-4 h-4" />,
