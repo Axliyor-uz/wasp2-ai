@@ -149,7 +149,7 @@ const About = () => {
             
             <iframe 
             
-              src="https://www.google.com/maps/@41.3597696,69.255168,8z?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
+              src="https://www.google.com/maps/"
               className={`w-full h-full grayscale-[0.8] contrast-[1.1] opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700
                 ${isDark ? 'invert-[0.9] hue-rotate-[260deg]' : ''}`}
               loading="lazy"
